@@ -1,0 +1,137 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Blood Crow', sans-serif;
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Blood Crow';
+  src: url('font/bloodcrowc.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.app {
+  display: 'flex';
+  box-sizing: 'border-box';
+  flex-direction: 'column';
+  justify-content: 'space-between';
+}
+
+.container {
+  align-items: center;
+}
+
+.card {
+  display: inline-block;
+  margin: 5px;
+  width: 200px;
+  height: 300px;
+  cursor: pointer;
+  border-radius: 10px;
+  transform-style: preserve-3d;
+  transition: transform 2000ms;
+}
+
+.card:hover {
+  transform: scale(0.95);
+}
+
+.back, .front{
+  position: absolute;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.front{
+  transform: rotateY(180deg);
+}
+
+.back{
+  background-image: url('https://i.kym-cdn.com/photos/images/original/001/472/952/e87.png');
+}
+
+.titulo:hover {
+  color: #ff010b;
+}
+
+.winnerDialog[open] {
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-animation: show-dialog 1s ease normal;
+}
+
+.dialogContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.winnerDialog.hide {
+  -webkit-animation: hide-dialog 1s ease normal;
+}
+
+.winnerDialog::backdrop {
+  position: fixed;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-animation: none;
+}
+
+.winnerDialog[open]::backdrop {
+  -webkit-animation: show-backdrop 0.5s ease 0.5s normal;
+}
+
+.winnerDialog.hide::backdrop {
+  -webkit-animation: hide-backdrop 0.5s ease 0.5s normal;
+}
+
+@-webkit-keyframes show-dialog {
+  from {
+      opacity: 0;
+      transform: translateY(-100%);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes hide-dialog{
+  to {
+      opacity: 0;
+      transform: translateY(-100%);
+  }
+}
+
+@-webkit-keyframes show-backdrop {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+@-webkit-keyframes hide-backdrop{
+  to {
+      opacity: 0;
+  }
+}
+
+.winnerDialog img {
+  max-width: 200px;
+  width: 50vw;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.winnerDialog button {
+  background-color: #5a0c0e;
+  font-style: bold;
+}
